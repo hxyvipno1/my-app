@@ -50,4 +50,5 @@ G6.registerNode('iconfont', {
   });
 
 
+
   export default G6;

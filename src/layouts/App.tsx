@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React from 'react';
 import styles from './App.module.scss';
 import { useLocation } from 'react-router-dom';
 import { withRouter } from "react-router";
@@ -7,6 +7,8 @@ import { Layout } from 'antd';
 import Nav from './Nav';
 import Crumb from './Crumb';
 import { ClickParam } from 'antd/lib/menu';
+import { useConcent, NoMap } from 'concent';
+import { RootState, CtxMS,FooM } from "types/store";
 
 const { Header, Content, Footer } = Layout;
 
@@ -16,16 +18,44 @@ interface appProp{
   location?: H.Location
 }
 
-const BasicLayout: React.FC = ({children, history}:appProp) => {
-  const { pathname } = useLocation();
-  const [activeKey,setActiveKey] = useState(pathname);
-  const getYear = ()=> new Date().getFullYear();
-  const changeKeys = ({key}:ClickParam)=>{
-    setActiveKey(key);
-    history&&history.push({
-      pathname: key
-    })
+interface istate{
+  activeKey:string
+}
+
+type CtxPre = CtxMS<appProp,FooM, istate>;
+
+const setup = (ctx: CtxPre)=>{
+  
+  return{
+    changeKeys({key}:ClickParam){
+      const { state:{githubAdress,activeKey},props:{ history } } = ctx;
+      if(key ==='github'){        
+        window.open(githubAdress);
+      }else if(activeKey===key){
+        return false;
+      }else{
+        ctx.setState({ activeKey:key });
+        history?.push({
+          pathname: key
+        })
+      }
+    },
+    getYear(){new Date().getFullYear()} 
   }
+}
+
+type Ctx = CtxMS<appProp,FooM, istate,ReturnType<typeof setup>>;
+
+const BasicLayout: React.FC = ({children, history}:appProp) => {
+
+  const {state:{activeKey},settings} = useConcent<{}, Ctx, NoMap, RootState, FooM, istate>({ 
+    module:'foo' ,
+    setup,
+    state:{
+      activeKey:useLocation().pathname
+    },
+    props:{children, history}
+  });
 
   return (
     <Layout style={{height:'100%'}}>
@@ -33,7 +63,7 @@ const BasicLayout: React.FC = ({children, history}:appProp) => {
       <div className={styles.logo} >
         <i className="iconfont">&#xe660;</i>
       </div>
-      <Nav selectedKeys={[activeKey]} changeKeys={(item)=>{changeKeys(item)}}/>
+      <Nav selectedKeys={[activeKey]} changeKeys={(item)=>{settings.changeKeys(item)}}/>      
     </Header>
     <Content className={styles["site-layout"]} style={{ padding: '0 50px', marginTop: 64 }}>
       <Crumb/>
@@ -41,9 +71,9 @@ const BasicLayout: React.FC = ({children, history}:appProp) => {
           {children}
       </div>
     </Content>
-    <Footer style={{ textAlign: 'center' }}>Visible ©{getYear()} Created by Hu Xian Yang</Footer>
+    <Footer style={{ textAlign: 'center' }}>Visible ©{settings.getYear()} Created by Hu Xian Yang</Footer>
   </Layout>
   );
 };
 
-export default withRouter(BasicLayout);
+export default withRouter(React.memo(BasicLayout));

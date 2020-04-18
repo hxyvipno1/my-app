@@ -3,10 +3,7 @@ import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import MenuData from './manuData';
 import styles from './index.module.scss';
-import {
-    CaretDownOutlined
-  } from '@ant-design/icons';
-
+import { CaretDownOutlined,GithubOutlined} from '@ant-design/icons';
 interface NavProp {
     selectedKeys: string[];
     changeKeys: (item:ClickParam)=> void;
@@ -30,6 +27,7 @@ const Nav: React.FC<NavProp> = ({ selectedKeys,changeKeys }) => {
                         <Menu.Item key={item.path}>{item.name}</Menu.Item>
                     )
                 } 
+                <Menu.Item key='github'><GithubOutlined /></Menu.Item>
             </Menu>
         </div>
     )

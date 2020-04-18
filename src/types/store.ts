@@ -6,6 +6,11 @@ import { ICtx, StateType, ComputedValType, ReducerType, MODULE_VOID, MODULE_DEFA
 /** foo模块相关 */
 import fooState from "../models/foo/state";
 
+/** antV模块相关 */
+import antVState from '../models/antV/state';
+
+
+
 /**
  * 推导SetupDemo模块各个文件的类型组装RootState,RootReducer, RootComputed
  * 后续在SetupDemo模块下添加各种新的函数或属性，组件都能智能感知到
@@ -15,12 +20,16 @@ import fooState from "../models/foo/state";
 export type FooState = StateType<typeof fooState>;
 export type FooM = typeof moduleCst.foo;
 
+export type AntVState = StateType<typeof antVState>;
+export type AntVM = typeof moduleCst.antV;
+
 /** 构造根State类型 */
 export interface RootState {
   [cst.MODULE_VOID]: {};
   [cst.MODULE_GLOBAL]: {};
   [cst.MODULE_DEFAULT]: {};
   [moduleCst.foo]: FooState;
+  [moduleCst.antV]: AntVState;
 }
 
 /** 构造根Reducer类型 */

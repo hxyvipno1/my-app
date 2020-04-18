@@ -10,7 +10,11 @@ export default[
             {
                 path:'/antvG6/behavior',
                 name:'behavior'
-            }
+            },
+            {
+                path:'/antvG6/components',
+                name:'components'
+            },
         ]
     },
     {

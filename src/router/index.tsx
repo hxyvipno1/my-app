@@ -8,6 +8,7 @@ import {
 import App from '../layouts/App';
 import Shap from '../pages/antvG6/shap';
 import Behavior from '../pages/antvG6/behavior';
+import Components from '../pages/antvG6/components';
 import BigDataShow from '../pages/bigDataShow';
 
 
@@ -22,7 +23,8 @@ export default function index() {
                         <App>
                             <Route exact path="/antvG6/shap" component={Shap}></Route>
                             <Route exact path="/antvG6/behavior" component={Behavior}></Route>
-                            <Redirect to="/antvG6/shap" push/>
+                            <Route exact path="/antvG6/components" component={Components}></Route>
+                            
                         </App> 
                     )}>
                 </Route>

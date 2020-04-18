@@ -1,6 +1,6 @@
 export function getInitState(){
     return {
-        githubAdress:''
+        githubAdress:'https://github.com/hxyvipno1/my-app'
     }
 }
 
