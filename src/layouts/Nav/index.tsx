@@ -2,8 +2,10 @@ import React from 'react';
 import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import MenuData from './manuData';
-import styles from './index.scss';
-
+import styles from './index.module.scss';
+import {
+    CaretDownOutlined
+  } from '@ant-design/icons';
 
 interface NavProp {
     selectedKeys: string[];
@@ -17,7 +19,10 @@ const Nav: React.FC<NavProp> = ({ selectedKeys,changeKeys }) => {
                 {
                     MenuData.map((item)=>
                         item.child?
-                        <Menu.SubMenu title={item.name} key={item.path}>
+                        <Menu.SubMenu                             
+                            key={item.path}
+                            title={<> {item.name} <CaretDownOutlined /></>} 
+                        >
                             {
                                 item.child.map((sitem)=> <Menu.Item key={sitem.path}>{sitem.name}</Menu.Item>)
                             }

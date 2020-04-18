@@ -1,0 +1,10 @@
+.menuCont{
+   :global{
+        .ant-menu-item, .ant-menu-submenu{
+            line-height: 63px;
+        }
+        .ant-menu-submenu-selected{
+            color: #1890ff;
+        }
+   }
+}
