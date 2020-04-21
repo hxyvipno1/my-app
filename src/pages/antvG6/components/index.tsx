@@ -3,12 +3,8 @@ import { useConcent, NoMap } from 'concent';
 import { AntVM,RootState,CtxM } from 'types/store';
 import G6 from '../register';
 import comStyle from './index.module.scss';
-import insertCss from 'insert-css';
 export type CtxPre = CtxM<{},AntVM>;
 
-// insertCss(`
- 
-// `);
 
 
 const setup = (ctx:CtxPre)=>{

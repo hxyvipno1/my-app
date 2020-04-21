@@ -1,0 +1,19 @@
+.toolBarCont{
+    background: #FFF;
+    box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.1);
+    width: 32px;
+    border-radius: 4px;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    bottom:200px;
+    .tooBarBtn{
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        border: none;
+        margin: 10px auto;
+        display: block;
+    }
+}
+

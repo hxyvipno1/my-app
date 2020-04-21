@@ -16,6 +16,5 @@ function getComponentsData(){
 
 export default async ()=>{
     const myComponentsGraphData = await getComponentsData();
-    console.log(myComponentsGraphData)
     return{ componentsGraphData: myComponentsGraphData }
 }

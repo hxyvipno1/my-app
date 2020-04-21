@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import G6 from '../register';
 import styles from './index.module.scss';
 
-
-
 export default class index extends Component {
+
 
     componentDidMount() {
         this.init()
@@ -151,10 +150,6 @@ export default class index extends Component {
             container: 'container',
             width,
             height,
-            layout: {
-                type:'circular'
-            },
-            fitView:true,
             modes: {
                 default: ['drag-node','drag-canvas','zoom-canvas']
             },
@@ -182,22 +177,19 @@ export default class index extends Component {
             }
             
         });
-        graph.data(data);
+        graph.data({nodes:[],edges:[]});
         graph.render();
-
-        function refreshDragedNodePosition(e: any) {
-            const model = e.item.get('model');
-            model.fx = e.x;
-            model.fy = e.y;
-        }
-        graph.on('node:dragstart', (e: any) => {
-            graph.layout();
-            refreshDragedNodePosition(e);
-        });
-        graph.on('node:drag', (e: any) => {
-            refreshDragedNodePosition(e);
-        });
+        data.nodes.forEach((item)=>{
+            graph.addItem('node',item);
+        })
+        data.edges.forEach((item)=>{
+            graph.addItem('edge',item);
+        })
+        graph.updateLayout({type:'circular'});
+        graph.fitView();
     }
+
+ 
 
     render() {
         return (
