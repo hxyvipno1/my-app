@@ -182,9 +182,17 @@ export default class index extends Component {
             }
             
         });
-        graph.data(data);
+        graph.data({nodes:[],edges:[]});
         graph.render();
-
+        console.log(graph)
+        setTimeout(() => {
+            data.nodes.forEach((item)=>{
+                graph.add("node",item)
+            })
+            data.edges.forEach((item)=>{ graph.add("edge",item) });
+            graph.updateLayout( {type:'circular'});
+            graph.fitView();
+          }, 16)
         function refreshDragedNodePosition(e: any) {
             const model = e.item.get('model');
             model.fx = e.x;
