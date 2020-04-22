@@ -24,7 +24,8 @@ export function getInitState(){
         edges:[]
     }
     return {
-        componentsGraphData
+        componentsGraphData,
+        graph:null
     }
 }
 

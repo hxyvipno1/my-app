@@ -9,19 +9,27 @@ import fooState from "../models/foo/state";
 /** antV模块相关 */
 import antVState from '../models/antV/state';
 
+/** graphin模块相关 */
+import graphinState from 'pages/antvG6/graphin/models/state';
+import * as graphinRd from 'pages/antvG6/graphin/models/reducer';
 
 
 /**
  * 推导SetupDemo模块各个文件的类型组装RootState,RootReducer, RootComputed
  * 后续在SetupDemo模块下添加各种新的函数或属性，组件都能智能感知到
  */
-
+// export type SetupDemoCu = ComputedValType<typeof setupDemoCu>;
+// export type SetupDemoRd = ReducerType<typeof setupDemoRd>;
 
 export type FooState = StateType<typeof fooState>;
 export type FooM = typeof moduleCst.foo;
 
 export type AntVState = StateType<typeof antVState>;
 export type AntVM = typeof moduleCst.antV;
+
+export type GraphinState = StateType<typeof graphinState>;
+export type GraphinM = typeof moduleCst.graphin;
+export type GraphinRd =  ReducerType<typeof graphinRd>;
 
 /** 构造根State类型 */
 export interface RootState {
@@ -30,6 +38,7 @@ export interface RootState {
   [cst.MODULE_DEFAULT]: {};
   [moduleCst.foo]: FooState;
   [moduleCst.antV]: AntVState;
+  [moduleCst.graphin]: GraphinState;
 }
 
 /** 构造根Reducer类型 */
@@ -37,6 +46,7 @@ export interface RootReducer {
   [cst.MODULE_VOID]: {};
   [cst.MODULE_GLOBAL]: {};
   [cst.MODULE_DEFAULT]: {};
+  [moduleCst.graphin]: GraphinRd;
 }
 
 /** 构造根Computed类型 */
