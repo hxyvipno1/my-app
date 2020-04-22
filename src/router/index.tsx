@@ -10,7 +10,10 @@ import Shap from '../pages/antvG6/shap';
 import Behavior from '../pages/antvG6/behavior';
 import Components from '../pages/antvG6/components';
 import Graphin from '../pages/antvG6/graphin';
+import Pie from '../pages/antvG2/pie';
+import Bar from '../pages/antvG2/bar';
 import BigDataShow from '../pages/bigDataShow';
+
 
 
 
@@ -27,6 +30,14 @@ export default function index() {
                             <Route exact path="/antvG6/components" component={Components}></Route>
                             <Route exact path="/antvG6/graphin" component={Graphin}></Route>
                             
+                        </App> 
+                    )}>
+                </Route>
+                <Route path="/antvG2" component={
+                    ()=>(
+                        <App>
+                            <Route exact path="/antvG2/pie" component={Pie}></Route>
+                            <Route exact path="/antvG2/bar" component={Bar}></Route>       
                         </App> 
                     )}>
                 </Route>

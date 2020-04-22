@@ -10,7 +10,7 @@ function getInitState():State{
     return{
         drawerVisible: false,
         drawerKey:'',
-        graph: null
+        graph: 123
     }
 }
 

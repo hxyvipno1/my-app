@@ -22,6 +22,20 @@ export default[
         ]
     },
     {
+        path: '/antvG2',
+        name:'antvG2',
+        child:[           
+            {
+                path:'/antvG2/pie',
+                name:'pie'
+            },
+            {
+                path:'/antvG2/bar',
+                name:'bar'
+            },
+        ]
+    },
+    {
         path: '/bigDataShow',
         name:'bigDataShow'
     }
