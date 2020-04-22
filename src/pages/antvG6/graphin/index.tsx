@@ -5,7 +5,7 @@ import ToolBar from './components/toolBar';
 import OperatorBar from './components/operatorBar';
 import AutoDrawer from './components/autoDrawer';
 import styles from './index.module.scss';
-import { useConcent,NoMap } from 'concent';
+import { useConcent,NoMap,SettingsType } from 'concent';
 import { AntVM, CtxM,RootState } from 'types/store';
 import { CtxPre } from '../components';
 import G6 from '../register';
@@ -29,12 +29,13 @@ const setup = (ctx: CtxPre)=>{
         });
         graph.data({nodes:[],edges:[]});
         graph.render();
+        console.log(graph)
         ctx.setState({graph})
     },[]);
     return{}
 }
 
-type Ctx = CtxM<{},AntVM,ReturnType<typeof setup>>
+type Ctx = CtxM<{},AntVM,SettingsType<typeof setup>>
 
 export default function Graphin() {
     useConcent<{}, Ctx, NoMap, RootState, AntVM>({

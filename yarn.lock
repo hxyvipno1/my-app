@@ -3305,10 +3305,10 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concent@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.npm.taobao.org/concent/download/concent-2.4.4.tgz#69480dac6aadff8d61250f03f85d539cc8b5601d"
-  integrity sha1-aUgNrGqt/41hJQ8D+F1TnMi1YB0=
+concent@2.4.5:
+  version "2.4.5"
+  resolved "https://registry.npm.taobao.org/concent/download/concent-2.4.5.tgz#966e1a635c960e4f475c2e8b7cac6d9ea21231f2"
+  integrity sha1-lm4aY1yWDk9HXC6LfKxtnqISMfI=
 
 confusing-browser-globals@^1.0.9:
   version "1.0.9"

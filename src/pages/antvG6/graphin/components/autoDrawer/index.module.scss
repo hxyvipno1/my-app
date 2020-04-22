@@ -1,0 +1,13 @@
+.drawerCont{
+    :global{
+        .ant-drawer-title{
+            line-height: 22px;   
+                 
+        }
+    }
+    .closeBtn{
+        float: right;
+        padding-top: 3px;  
+        cursor: pointer;
+    }
+}
