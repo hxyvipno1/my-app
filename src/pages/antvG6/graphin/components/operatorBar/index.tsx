@@ -15,6 +15,9 @@ const setup = (ctx: CtxPre)=>{
     return{
         addNodes(){
             ctx.setState({ drawerVisible: true,drawerKey:"addNodes" })
+        },
+        extendRelation(){
+            ctx.setState({ drawerVisible: true,drawerKey:"extendRelation" })
         }
     }
 }
@@ -30,7 +33,7 @@ export default memo(()=> {
                     加点</button>
             </Tooltip>
             <Tooltip title="关系扩散" placement="bottom">
-                <button type="button" className={classnames(styles.operatBtn,"ant-btn")}>
+                <button type="button" className={classnames(styles.operatBtn,"ant-btn")} onClick={settings.extendRelation}>
                     <ApartmentOutlined style={{display:"block"}}/>
                     关系扩散</button>
             </Tooltip>

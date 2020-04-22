@@ -13,7 +13,6 @@ import antVState from '../models/antV/state';
 import graphinState from 'pages/antvG6/graphin/models/state';
 import * as graphinRd from 'pages/antvG6/graphin/models/reducer';
 
-
 /**
  * 推导SetupDemo模块各个文件的类型组装RootState,RootReducer, RootComputed
  * 后续在SetupDemo模块下添加各种新的函数或属性，组件都能智能感知到
@@ -30,6 +29,7 @@ export type AntVM = typeof moduleCst.antV;
 export type GraphinState = StateType<typeof graphinState>;
 export type GraphinM = typeof moduleCst.graphin;
 export type GraphinRd =  ReducerType<typeof graphinRd>;
+
 
 /** 构造根State类型 */
 export interface RootState {
@@ -60,10 +60,10 @@ export type Modules = keyof RootState;
 // 一些常用的基于Ctx封装的辅助类型
 
 /** 属于某个模块 */
-export type CtxM<P, M extends Modules, Se = {}> = ICtx<RootState, RootReducer, RootComputed, P, {}, M, MODULE_VOID, Se>;
+export type CtxM<P, M extends Modules, Se = {}, RefCu = {}> = ICtx<RootState, RootReducer, RootComputed, P, {}, M, MODULE_VOID, Se, RefCu>;
 
 /** 属于某个模块，扩展了私有状态时 */
-export type CtxMS<P, M extends Modules, St = {}, Se = {}> = ICtx<RootState, RootReducer, RootComputed, P, St, M, MODULE_VOID, Se>;
+export type CtxMS<P, M extends Modules, St = {}, Se = {}, RefCu = {}> = ICtx<RootState, RootReducer, RootComputed, P, St, M, MODULE_VOID, Se, RefCu>;
 
 /** 属于某个模块，连接了其他模块 */
 export type CtxMConn<P, M extends Modules, Conn extends Modules, Se = {}> = ICtx<RootState, RootReducer, RootComputed, P, {}, M, Conn, Se>;

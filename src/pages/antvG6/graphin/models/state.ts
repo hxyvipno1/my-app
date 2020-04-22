@@ -1,8 +1,16 @@
-function getInitState(){
+
+
+type State = {
+    drawerVisible: boolean,
+    drawerKey: string,
+    graph: any
+}
+
+function getInitState():State{
     return{
         drawerVisible: false,
-        drawerKey:'addNodes',
-        graph:null
+        drawerKey:'',
+        graph: null
     }
 }
 
