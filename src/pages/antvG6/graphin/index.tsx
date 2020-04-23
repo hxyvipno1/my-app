@@ -6,9 +6,12 @@ import OperatorBar from './components/operatorBar';
 import AutoDrawer from './components/autoDrawer';
 import styles from './index.module.scss';
 import { useConcent,NoMap,SettingsType } from 'concent';
-import { AntVM, CtxM,RootState } from 'types/store';
-import { CtxPre } from '../components';
+import { GraphinM, CtxM,RootState } from 'types/store';
+// import { CtxPre } from '../components';
 import G6 from '../register';
+
+type CtxPre = CtxM<{},GraphinM>;
+
 
 const setup = (ctx: CtxPre)=>{
 
@@ -35,11 +38,11 @@ const setup = (ctx: CtxPre)=>{
     return{}
 }
 
-type Ctx = CtxM<{},AntVM,SettingsType<typeof setup>>
+type Ctx = CtxM<{},GraphinM,SettingsType<typeof setup>>
 
 export default function Graphin() {
-    useConcent<{}, Ctx, NoMap, RootState, AntVM>({
-        module:'antV',
+    useConcent<{}, Ctx, NoMap, RootState, GraphinM>({
+        module:'graphin',
         setup
     })
     return (

@@ -3,6 +3,7 @@ import { useConcent, NoMap } from 'concent';
 import { AntVM,RootState,CtxM } from 'types/store';
 import G6 from '../register';
 import comStyle from './index.module.scss';
+
 export type CtxPre = CtxM<{},AntVM>;
 
 
