@@ -7,6 +7,9 @@ export default class index extends Component {
 
     componentDidMount() {
         this.init()
+        setTimeout(()=>{
+            document.getElementById('container')?.click()
+        },200)
     }
 
     init() {
@@ -179,14 +182,18 @@ export default class index extends Component {
         });
         graph.data({nodes:[],edges:[]});
         graph.render();
-        data.nodes.forEach((item)=>{
-            graph.addItem('node',item);
-        })
-        data.edges.forEach((item)=>{
-            graph.addItem('edge',item);
-        })
-        graph.updateLayout({type:'circular'});
-        graph.fitView();
+        
+        
+        setTimeout(() => {
+            data.nodes.forEach((item)=>{
+                graph.addItem('node',item);
+            })
+            data.edges.forEach((item)=>{
+                graph.addItem('edge',item);
+            })
+            graph.updateLayout({type:'circular'});
+            graph.fitView();
+        }, 16)
     }
 
  
@@ -194,7 +201,7 @@ export default class index extends Component {
     render() {
         return (
             <div id="container" className={styles.shapCont}>
-
+                <i className="iconfont">&#xe674;</i>
             </div>
         )
     }

@@ -32,7 +32,6 @@ const setup = (ctx: CtxPre)=>{
         });
         graph.data({nodes:[],edges:[]});
         graph.render();
-        console.log(graph)
         ctx.setState({graph})
     },[]);
     return{}

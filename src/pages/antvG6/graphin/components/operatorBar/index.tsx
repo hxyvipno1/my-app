@@ -18,6 +18,7 @@ const setup = (ctx: CtxPre)=>{
         },
         extendRelation(){
             ctx.setState({ drawerVisible: true,drawerKey:"extendRelation" })
+            console.log(ctx.state.graph.getNodes())
         }
     }
 }

@@ -31,13 +31,14 @@ const cuDesc = {
 const setup = (ctx: CtxPre)=>{
 
     ctx.computed(cuDesc);
+    const Ctx = ctx as Ctx;
     return{
-        close(){ ctx.setState({ drawerVisible:false }) },
+        close(){ Ctx.setState({ drawerVisible:false }) },
         handleAddBtn(values:Store){
             const { targetType, targetValue } =values;
-            const nodeData =targetValue.trim().split((/[/\s,，;:(/\r/\n)]/)).map((item:string) => `${item}_${targetType}`);
-            ctx.dispatch("addNodes",nodeData);
-            ctx.setState({ drawerVisible:false });
+            const nodeData =targetValue.trim().split((/[/\s,，;:(/\r/\n)]/)).map((item:string) => ({id:`${item}_${targetType}`,label:item,type:targetType}));
+            Ctx.dispatch("addNodes",nodeData);
+            Ctx.settings.close();
         }
     }
 }

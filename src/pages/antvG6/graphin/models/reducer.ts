@@ -15,14 +15,20 @@ export async function extendRelation(){
 
 export async function addNodes(payload:[], moduleState:GraphinState,action:Ac){
     const { graph } = moduleState;
-    console.log(graph)
-    // payload.forEach(item=>{
-    //     const nodeItem = {
-    //         id: item,
-    //         label:item,
-    //         text: '\ue674'
-    //     }
-    //     graph.addItem("node",nodeItem)
-    // })
+    payload.forEach(item=>{
+        const { id, label, type } = item;
+        const text = type ===1?'\ue674':'\ue692';
+        const nodeItem = {
+            id,
+            label,
+            text
+        }
+        graph.addItem("node",nodeItem);
+        graph.updateLayout({
+            type: 'grid',
+            begin: [0, 0],
+            rows: 4
+        });
+    })
     
 }
