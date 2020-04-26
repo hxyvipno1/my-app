@@ -31,6 +31,12 @@ export default function Pie() {
             field: 'value',
             dimension: 'type',
             as: 'percent',
+          }).transform({//第一层饼图加上标识level为1
+              type:'map',
+              callback(row){
+                row.level = 1;
+                return row;
+              }
           });
           const chart = new Chart({
             container: 'container',
@@ -63,7 +69,7 @@ export default function Pie() {
             .label('type', {
               offset: -10,
             })
-            .tooltip('name*percent', (item, percent) => {
+            .tooltip('type*percent', (item, percent) => {
               percent = (percent * 100).toFixed(2) + '%';
               return {
                 name: item,
@@ -74,6 +80,7 @@ export default function Pie() {
               lineWidth: 1,
               stroke: '#fff',
             });
+            
           
           const outterView = chart.createView();
           const dv1 = new DataSet.DataView();
@@ -82,7 +89,13 @@ export default function Pie() {
             field: 'value',
             dimension: 'name',
             as: 'percent',
-          });
+          }).transform({//第二层饼图加上标识level为2
+            type:'map',
+            callback(row){
+              row.level = 2;
+              return row;
+            }
+        });
           
           outterView.data(dv1.rows);
           outterView.scale({
@@ -114,15 +127,26 @@ export default function Pie() {
               lineWidth: 1,
               stroke: '#fff',
             });
-          
+            /** view.on('interval:click') 单独对view绑定事件 */
+            // outterView.on('interval:click', (ev:any) => {
+            //   notification.open({
+            //     message: `${ev.data.data.type}卦，${ev.data.data.name}时`,
+            //     description: `${ev.data.data.describe}`
+            //   })
+            //  console.log(ev)
+            // });
+            //通过判断level值，来判断内层与外层
+            chart.on('click', (ev:any) => {
+              if(ev.data){
+                const level = ev.data.data.level;
+                notification.open({
+                  message: level===1?`${ev.data.data.type}卦`:`${ev.data.data.type}卦，${ev.data.data.name}时`,
+                  description: `${ev.data.data.describe}`
+                })
+              } 
+            });
           chart.interaction('element-highlight');
-          chart.on('click', (ev:any) => {
-            notification.open({
-              message: `${ev.data.data.type}卦，${ev.data.data.name}时`,
-              description: `${ev.data.data.describe}`
-            })
-           console.log(ev)
-          });
+         
           chart.render();
     }
 
