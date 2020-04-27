@@ -63,7 +63,7 @@ const BasicLayout: React.FC = ({children, history}:appProp) => {
       <div className={styles.logo} >
         <i className="iconfont">&#xe660;</i>
       </div>
-      <Nav selectedKeys={[activeKey]} changeKeys={(item)=>{settings.changeKeys(item)}}/>      
+      <Nav selectedKeys={[activeKey==='/'?'/antvG6/behavior':activeKey]} changeKeys={(item)=>{settings.changeKeys(item)}}/>      
     </Header>
     <Content className={styles["site-layout"]} style={{ padding: '0 50px', marginTop: 64 }}>
       <Crumb/>
@@ -76,4 +76,4 @@ const BasicLayout: React.FC = ({children, history}:appProp) => {
   );
 };
 
-export default withRouter(React.memo(BasicLayout));
+export default withRouter(BasicLayout);

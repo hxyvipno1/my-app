@@ -21,34 +21,35 @@ import BigDataShow from '../pages/bigDataShow';
 export default function index() {
     return (
         <Router>
-            <Switch>             
+            <Switch> 
+                <App>            
                 <Route path="/antvG6" component={
                     ()=>(
-                        <App>
+                        <>
                             <Route exact path="/antvG6/behavior" component={Behavior}></Route>
                             <Route exact path="/antvG6/shap" component={Shap}></Route>                            
                             <Route exact path="/antvG6/components" component={Components}></Route>
                             <Route exact path="/antvG6/graphin" component={Graphin}></Route>
-                            
-                        </App> 
+                        </>  
                     )}>
                 </Route>
                 <Route path="/antvG2" component={
                     ()=>(
-                        <App>
+                        <>
                             <Route exact path="/antvG2/pie" component={Pie}></Route>
                             <Route exact path="/antvG2/bar" component={Bar}></Route>       
-                        </App> 
+                        </> 
                     )}>
                 </Route>
                 <Route path="/bigDataShow" component={
                     ()=>(
-                        <App>
+                        <>
                             <Route path="/bigDataShow" component={BigDataShow}></Route>
-                        </App> 
+                        </> 
                     )}>
                 </Route>
                 <Route path="/" render={()=>( <Redirect to="/antvG6/behavior" push/> )}/>
+                </App> 
             </Switch>
         </Router>
     )
