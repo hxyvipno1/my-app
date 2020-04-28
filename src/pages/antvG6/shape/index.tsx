@@ -7,9 +7,6 @@ export default class index extends Component {
 
     componentDidMount() {
         this.init()
-        setTimeout(()=>{
-            document.getElementById('container')?.click()
-        },200)
     }
 
     init() {
@@ -79,22 +76,54 @@ export default class index extends Component {
             {
                 id: '6',
                 label: '6',
-                text: '\ue674'
+                text: '\ue674',
+                labelCfg: {
+                    position: 'bottom',
+                    offset:20,
+                    style:{
+                        fill:'red'
+                    }
+                  }
             },
             {
                 id: '7',
                 label: '7',
-                text: '\ue674'
+                text: '\ue674',
+                labelCfg: {
+                    position: 'bottom',
+                    offset:20,
+                    style:{
+                        fill:'red'
+                    }
+                  }
             },
             {
                 id: '8',
                 label: '8',
-                text: '\ue674'
+                text: '\ue674',
+                labelCfg: {
+                    position: 'bottom',
+                    offset:20,
+                    style:{
+                        fill:'red'
+                    }
+                  }
             },
             {
                 id: '9',
                 label: '9',
-                text: '\ue674'
+                text: '\ue674',
+                labelCfg: {
+                    position: 'bottom',
+                    offset:20,
+                    style:{
+                        fill:'red'
+                    }
+                  }
+            },{
+                id:'10',
+                label:'10',
+                type:'sql'
             }],
             edges: [{
                 source: '0',
@@ -154,7 +183,7 @@ export default class index extends Component {
             width,
             height,
             modes: {
-                default: ['drag-node','drag-canvas','zoom-canvas']
+                default: ['drag-node','drag-canvas','zoom-canvas','click-select']
             },
             defaultNode: {
                 size: 20,
@@ -171,12 +200,19 @@ export default class index extends Component {
                     },
                 },
                 backgroundConfig:{
-                    fill:'Coral'
+                    fill:'Coral',
+                    stroke:'green'
                 }
             },
             defaultEdge: {
                 size: 1,
                 color: '#e2e2e2'
+            },
+            nodeStateStyles:{
+                selected:{
+                    stroke: '#d9d9d9',
+                    fill: '#5394ef',
+                }
             }
             
         });
@@ -184,6 +220,10 @@ export default class index extends Component {
         graph.render();
         
         
+        graph.on('node:click',(ev:any)=>{
+            console.log(ev.item)
+        })
+
         setTimeout(() => {
             data.nodes.forEach((item)=>{
                 graph.addItem('node',item);
@@ -201,7 +241,7 @@ export default class index extends Component {
     render() {
         return (
             <div id="container" className={styles.shapCont}>
-                <i className="iconfont">&#xe674;</i>
+
             </div>
         )
     }

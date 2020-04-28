@@ -1,5 +1,5 @@
 import React from 'react';
-import { useConcent, NoMap } from 'concent';
+import { useConcent, NoMap, SettingsType } from 'concent';
 import { AntVM,RootState,CtxM } from 'types/store';
 import G6 from '../register';
 import comStyle from './index.module.scss';
@@ -64,11 +64,9 @@ const setup = (ctx:CtxPre)=>{
           graph.render();
 
     },[])
-
-    return{}
 }
 
-export type Ctx = CtxM<{},AntVM,ReturnType<typeof setup>>;
+export type Ctx = CtxM<{},AntVM,SettingsType<typeof setup>>;
 
 const Components: React.FC = ()=> {
     useConcent<{}, Ctx, NoMap, RootState, AntVM>({

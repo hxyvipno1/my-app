@@ -8,8 +8,8 @@ export default[
                 name:'behavior'
             },
             {
-                path:'/antvG6/shap',
-                name:'shap'
+                path:'/antvG6/shape',
+                name:'shape'
             },
             {
                 path:'/antvG6/components',
